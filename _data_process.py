@@ -7,13 +7,16 @@ import numpy as np
 # save_path = './Data/Process/Amazon/' + str(attack) + '/'
 
 attack = 0.01 # 0.02
-thre_ = 5
-load_path = './Data/Original/BookCrossing.csv'
-save_path = './Data/Process/BookCrossing/' + str(attack) + '/'
+thre_ = 4
+load_path = './Data/Original/MovieLens.dat'
+save_path = './Data/Process/MovieLens/' + str(attack) + '/'
 
 if __name__ == '__main__':
 
-    if thre_ == 4:
+    if load_path.endswith('.dat'):
+        print('MovieLens')
+        data = pd.read_csv(load_path, delimiter='::', engine='python', header=None, usecols=[0,1,2])
+    elif thre_ == 4:
         print('Amazon')
         data = pd.read_csv(load_path, delimiter=',', encoding='ISO-8859-1').iloc[:, :3]  # 第四列是浏览时间
     elif thre_ == 5:

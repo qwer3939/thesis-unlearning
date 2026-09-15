@@ -164,3 +164,6 @@ Data/Original/
 Data/Process/ 
 Weights/ 
 __pycache__/ 
+attack_output/ 
+example_scores.csv 
+suspicious_users.txt 
