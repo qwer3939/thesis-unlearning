@@ -148,8 +148,8 @@ class LightGCN(nn.Module):
         return gamma
 
     def predict(self, users, items):
-        users = torch.from_numpy(users).long()
-        items = torch.from_numpy(items).long()
+        users = torch.from_numpy(users).long().cuda()
+        items = torch.from_numpy(items).long().cuda()
         with torch.no_grad():
             all_user_emb, all_item_emb = self.computer()
             users_emb = all_user_emb[users]

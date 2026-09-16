@@ -277,7 +277,7 @@ class Data_for_RecEraser_LightGCN(object):
                 print(f"costing {end-s}s, saved norm_mat...")
                 sp.save_npz(self.path + '/s_pre_adj_mat_' + str(local_id) + mode + '.npz', norm_adj)
             graph = self._convert_sp_mat_to_sp_tensor(norm_adj)
-            graph = graph.coalesce()
+            graph = graph.coalesce().cuda()
         return graph
 
     def _convert_sp_mat_to_sp_tensor(self, X):
@@ -363,7 +363,7 @@ class Data_for_LightGCN(object):
                 end = self.n_users + self.n_items
             else:
                 end = (i_fold + 1) * fold_len
-            A_fold.append(self._convert_sp_mat_to_sp_tensor(A[start:end]).coalesce())
+            A_fold.append(self._convert_sp_mat_to_sp_tensor(A[start:end]).coalesce().cuda())
         return A_fold
 
     def _convert_sp_mat_to_sp_tensor(self, X):
@@ -415,7 +415,7 @@ class Data_for_LightGCN(object):
                 print("done split matrix")
             else:
                 self.Graph = self._convert_sp_mat_to_sp_tensor(norm_adj)
-                self.Graph = self.Graph.coalesce()
+                self.Graph = self.Graph.coalesce().cuda()
                 print("don't split the matrix")
     
     def getSparseGraph_mode_b(self, mode, ratio_flag=0.01, recomputed=False):
@@ -494,7 +494,7 @@ class Data_for_LightGCN(object):
                 print("done split matrix")
             else:
                 self.ChangedGraph = self._convert_sp_mat_to_sp_tensor(norm_adj)
-                self.ChangedGraph = self.ChangedGraph.coalesce()
+                self.ChangedGraph = self.ChangedGraph.coalesce().cuda()
                 print("don't split the matrix")
 
     def getUserItemFeedback(self, users, items):
