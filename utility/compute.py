@@ -51,7 +51,7 @@ def get_eval_mask(data_generator):
         if test_data[ii,0] in nei_users or test_data[ii,1] in nei_items:
             mask_2[ii] = 1
     mask_2 = np.where(mask_2>0)[0] 
-    
+       
     # mask and
     mask_3 = np.zeros(valid_data.shape[0])
     for ii in range(valid_data.shape[0]):
@@ -68,6 +68,30 @@ def get_eval_mask(data_generator):
     return (mask_1, mask_2, mask_3, mask_4)
 
 
+
+def _safe_auc(y_true, y_score, metric_name):
+    """
+    Compute ROC-AUC only when the selected subset is valid.
+
+    Fake-user injection can make the old AND masks empty because validation/test
+    contain normal users only, while train_random contains synthetic fake users.
+    In that case the metric is not defined, so return NaN instead of stopping
+    the whole experiment.
+    """
+    y_true = np.asarray(y_true)
+    y_score = np.asarray(y_score)
+
+    if y_true.size == 0:
+        print(f"[AUC] {metric_name}: unavailable (0 samples) -> nan")
+        return np.nan
+
+    if np.unique(y_true).size < 2:
+        print(f"[AUC] {metric_name}: unavailable (only one class) -> nan")
+        return np.nan
+
+    return roc_auc_score(y_true, y_score)
+
+
 def get_eval_result(data_generator, model, mask):
     valid_data = data_generator.valid[['user', 'item', 'label']].values
     test_data = data_generator.test[['user', 'item', 'label']].values
@@ -82,13 +106,13 @@ def get_eval_result(data_generator, model, mask):
         valid_predictions =  model.predict(valid_data[:,0], valid_data[:,1])
         test_predictions =  model.predict(test_data[:,0], test_data[:,1])
 
-    valid_auc = roc_auc_score(valid_data[:,-1],valid_predictions)
-    valid_auc_or = roc_auc_score(valid_data[:,-1][mask_1], valid_predictions[mask_1])
-    valid_auc_and = roc_auc_score(valid_data[:,-1][mask_3], valid_predictions[mask_3])
+    valid_auc = _safe_auc(valid_data[:,-1], valid_predictions, "valid_auc")
+    valid_auc_or = _safe_auc(valid_data[:,-1][mask_1], valid_predictions[mask_1], "valid_auc_or")
+    valid_auc_and = _safe_auc(valid_data[:,-1][mask_3], valid_predictions[mask_3], "valid_auc_and")
 
-    test_auc = roc_auc_score(test_data[:,-1],test_predictions)
-    test_auc_or = roc_auc_score(test_data[:,-1][mask_2], test_predictions[mask_2])
-    test_auc_and = roc_auc_score(test_data[:,-1][mask_4], test_predictions[mask_4])
+    test_auc = _safe_auc(test_data[:,-1], test_predictions, "test_auc")
+    test_auc_or = _safe_auc(test_data[:,-1][mask_2], test_predictions[mask_2], "test_auc_or")
+    test_auc_and = _safe_auc(test_data[:,-1][mask_4], test_predictions[mask_4], "test_auc_and")
 
     return valid_auc, valid_auc_or, valid_auc_and, test_auc, test_auc_or, test_auc_and
     
