@@ -36,6 +36,7 @@ class model_hyparameters(object):
         self.lr = 1e-3
         self.regs = 0
         self.init_std = 0
+        self.n_fillers = 100
 
         # lightgcn hyper-parameters
         self.gcn_layers = 1
@@ -304,7 +305,7 @@ def main(config_args):
     print(config_args)
 
     os.makedirs("Weights/LightGCN_IFRU", exist_ok=True)
-    ifru_save_name = "Weights/LightGCN_IFRU/lightgcn_dataset_{}_attack_{}_lr_{}_khop_{}_emb_{}.pth".format(args.dataset, args.attack, args.if_lr, args.k_hop, args.embed_size)
+    ifru_save_name = "Weights/LightGCN_IFRU/lightgcn_dataset_{}_filler_{}_attack_{}_lr_{}_khop_{}_emb_{}.pth".format(args.dataset, args.n_fillers, args.attack, args.if_lr, args.k_hop, args.embed_size)
     unlearn = influence_unlearn(save_name=ifru_save_name,if_epoch=args.if_epoch, if_lr=args.if_lr, k_hop=args.k_hop, init_range=args.if_init_std)
     unlearn.compute_hessian_with_test(model=model,data_generator=data_generator)
     model.load_state_dict(torch.load(ifru_save_name, map_location='cuda'))

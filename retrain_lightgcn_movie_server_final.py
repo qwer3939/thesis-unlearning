@@ -30,6 +30,7 @@ class model_hyparameters(object):
         self.Ks = '[10]'
         self.data_type = 'full'
         self.init_std = 1e-4
+        self.n_fillers = 100
         self.seed = 1024
 
         # lightgcn hyper-parameters
