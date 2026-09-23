@@ -259,6 +259,15 @@ def process_attack_ratio(attack):
     # =====================================================
     save_path.mkdir(parents=True, exist_ok=True)
 
+    # item_map / user_map 저장 (target ID 검증용)
+    pd.DataFrame(
+        list(item_map.items()), columns=['original_id', 'internal_id']
+    ).to_csv(save_path / 'item_map.csv', index=False)
+
+    pd.DataFrame(
+        list(user_map.items()), columns=['original_id', 'internal_id']
+    ).to_csv(save_path / 'user_map.csv', index=False)
+
     train_save.to_csv(
         save_path / 'train.csv',
         index=False
