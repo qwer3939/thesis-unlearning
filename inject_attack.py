@@ -16,7 +16,7 @@ RATIOS = ("0.01", "0.03", "0.05")
 
 # Change this value to adjust the total number of filler items per fake user.
 # The script splits it as evenly as possible between popular and other items.
-DEFAULT_N_FILLERS = 100
+DEFAULT_N_FILLERS = 150
 
 
 def scan_ratings(path):

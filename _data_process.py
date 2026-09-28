@@ -8,8 +8,8 @@ from pathlib import Path
 ATTACK_RATIOS = [0.01, 0.03, 0.05]
 THRESHOLD = 4
 
-ATTACK_OUTPUT_DIR = Path('./attack_output')
-PROCESS_OUTPUT_DIR = Path('./Data/Process/MovieLens')
+ATTACK_OUTPUT_DIR = Path('./attack_output_target10')
+PROCESS_OUTPUT_DIR = Path('./Data/Process/MovieLens_target10')
 
 
 def k_core_filtering(select_data, k=5):

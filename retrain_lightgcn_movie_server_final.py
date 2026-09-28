@@ -23,14 +23,14 @@ class model_hyparameters(object):
         self.batch_size = 2048
         self.epoch = 200
         self.data_path = 'Data/Process/'
-        self.dataset = 'MovieLens'
+        self.dataset = 'MovieLens_filler100'
         self.attack = '0.01'
         self.layer_size = '[64,64]'
         self.verbose = 1
         self.Ks = '[10]'
         self.data_type = 'full'
         self.init_std = 1e-4
-        self.n_fillers = 100
+        self.n_fillers = 200
         self.seed = 1024
 
         # lightgcn hyper-parameters
@@ -145,7 +145,7 @@ def main(config_args):
 
 
 if __name__ == '__main__':
-    os.environ["CUDA_VISIBLE_DEVICES"] = '0'
+    os.environ["CUDA_VISIBLE_DEVICES"] = '2'
 
     for attack in ATTACK_RATIOS:
         config = {
@@ -153,7 +153,7 @@ if __name__ == '__main__':
             'embed_size': 32,
             'batch_size': 2048,
             'data_type': 'retraining',
-            'dataset': 'MovieLens',
+            'dataset': 'MovieLens_filler200',
             'attack': attack,
             'seed': 1024,
             'init_std': 1e-4,
