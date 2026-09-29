@@ -29,7 +29,7 @@ from Model.Lightgcn import LightGCN
 
 
 ATTACK_RATIOS = ("0.01", "0.03", "0.05")
-MODEL_TYPES = ("original", "retrain", "ifru")
+MODEL_TYPES = ("original", "retrain", "ifru", "scif")
 K = 10
 PREDICT_BATCH_SIZE = 200_000
 
@@ -129,6 +129,9 @@ def find_checkpoint(model_type, ratio):
         patterns = [f"Weights/LightGCN/*data_type-retraining*attack-{ratio}*.pth"]
     elif model_type == "ifru":
         patterns = [f"Weights/LightGCN_IFRU/*attack_{ratio}_*.pth"]
+    # find_checkpoint에 scif 추가
+    elif model_type == "scif":
+        patterns = [f"Weights/LightGCN_SCIF/lightgcn_dataset_MovieLens_attack_{ratio}_lr_10000.0_khop_0_emb_32.pth"]
     else:
         raise ValueError(model_type)
 
