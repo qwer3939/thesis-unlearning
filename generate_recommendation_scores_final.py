@@ -19,6 +19,7 @@ Important target-ID handling:
 from pathlib import Path
 import csv
 import glob
+import os
 
 import numpy as np
 import pandas as pd
@@ -32,6 +33,8 @@ ATTACK_RATIOS = ("0.01", "0.03", "0.05")
 MODEL_TYPES = ("original", "retrain", "ifru", "scif")
 K = 10
 PREDICT_BATCH_SIZE = 200_000
+
+N_FILLERS = int(os.environ.get("N_FILLERS", 150))
 
 DATA_ROOT = Path("Data/Process/MovieLens")
 TARGET_ORIGINAL_PATH = Path("attack_output/target_items.txt")
@@ -120,18 +123,29 @@ def infer_internal_targets(ratio, expected_target_count):
 
 
 def find_checkpoint(model_type, ratio):
+    ##if model_type == "original":
+    ##    patterns = [
+    ##        f"Weights/LightGCN/*data_type-full*attack-{ratio}*m.pth",
+    ##        f"Weights/LightGCN/*data_type-full*attack-{ratio}*.pth",
+    ##    ]
+    ##elif model_type == "retrain":
+    ##    patterns = [f"Weights/LightGCN/*data_type-retraining*attack-{ratio}*.pth"]
+    ##elif model_type == "ifru":
+    ##    patterns = [f"Weights/LightGCN_IFRU/*filler_{N_FILLERS}*attack_{ratio}_*.pth"]
+    ### find_checkpoint에 scif 추가
+    ##elif model_type == "scif":
+    ##    patterns = [f"Weights/LightGCN_SCIF/*attack_{ratio}_lr_10000.0_khop_0_emb_32.pth"]
+    
     if model_type == "original":
         patterns = [
-            f"Weights/LightGCN/*data_type-full*attack-{ratio}*m.pth",
-            f"Weights/LightGCN/*data_type-full*attack-{ratio}*.pth",
+            f"Weights/LightGCN/*data_type-full*attack-{ratio}*n_fillers-{N_FILLERS}*m.pth",
         ]
     elif model_type == "retrain":
-        patterns = [f"Weights/LightGCN/*data_type-retraining*attack-{ratio}*.pth"]
+        patterns = [f"Weights/LightGCN/*data_type-retraining*attack-{ratio}*n_fillers-{N_FILLERS}*.pth"]
     elif model_type == "ifru":
-        patterns = [f"Weights/LightGCN_IFRU/*filler_150*attack_{ratio}_*.pth"]
-    # find_checkpoint에 scif 추가
+        patterns = [f"Weights/LightGCN_IFRU/*filler_{N_FILLERS}*attack_{ratio}_*.pth"]
     elif model_type == "scif":
-        patterns = [f"Weights/LightGCN_SCIF/*attack_{ratio}_lr_10000.0_khop_0_emb_32.pth"]
+        patterns = [f"Weights/LightGCN_SCIF/*filler_{N_FILLERS}*attack_{ratio}_*.pth"]
     else:
         raise ValueError(model_type)
 
