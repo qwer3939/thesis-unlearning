@@ -1,34 +1,42 @@
 import pandas as pd
 import numpy as np
 
-# path = './Data/Process/BookCrossing/0.02/'
-# path = './Data/Process/Amazon/0.02/'
-# path = './Data/Process/BookCrossing/0.01/'
-path = './Data/Process/Amazon/0.01/'
+attack_ratios = ['0.01', '0.03', '0.05']
 
-# 读取train_normal和train_random的CSV文件
-train_normal_df = pd.read_csv(path + 'train_normal.csv')
-train_random_df = pd.read_csv(path + 'train_random.csv')
+for ratio in attack_ratios:
+    path = f'./Data/Process/MovieLens/{ratio}/'
 
-# 创建一个空的numpy数组来存储替换后的label
-new_labels = np.zeros(len(train_random_df))
+    print(f'===== {ratio} 시작 =====')
 
-# 遍历train_random中的每一行
-for index, row in train_random_df.iterrows():
-    u = row['user']
-    i = row['item']
-    user_records = train_normal_df[train_normal_df['user'] == u]
-    
-    if len(user_records) > 0:
-        # 计算指定user的平均label
-        avg_label = user_records['label'].mean()
-    else:
-        item_records = train_normal_df[train_normal_df['item'] == i]
-        # 计算指定item的平均label
-        avg_label = item_records['label'].mean()
-    
-    # 将新的label存储到numpy数组中
-    new_labels[index] = avg_label
+    # train_normal과 train_random CSV 파일 읽기
+    train_normal_df = pd.read_csv(path + 'train_normal.csv')
+    train_random_df = pd.read_csv(path + 'train_random.csv')
 
-# 将新的labels保存为npy格式
-np.save(path + 'avg_labels.npy', new_labels)
+    # 새로운 label 저장 배열
+    new_labels = np.zeros(len(train_random_df))
+
+    # train_random의 각 행 처리
+    for index, row in train_random_df.iterrows():
+        u = row['user']
+        i = row['item']
+
+        user_records = train_normal_df[
+            train_normal_df['user'] == u
+        ]
+
+        if len(user_records) > 0:
+            avg_label = user_records['label'].mean()
+        else:
+            item_records = train_normal_df[
+                train_normal_df['item'] == i
+            ]
+            avg_label = item_records['label'].mean()
+
+        new_labels[index] = avg_label
+
+    # avg_labels.npy 저장
+    np.save(path + 'avg_labels.npy', new_labels)
+
+    print(f'{path}avg_labels.npy 생성 완료')
+
+print('===== 전체 완료 =====')
