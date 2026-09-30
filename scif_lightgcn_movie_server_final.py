@@ -275,7 +275,7 @@ def main(config_args):
     print("test auc:",test_auc)
     print(config_args)
 
-    save_name = "Weights/LightGCN_SCIF/lightgcn_dataset_{}_attack_{}_lr_{}_khop_{}_emb_{}.pth".format(args.dataset, args.attack, args.if_lr, args.k_hop, args.embed_size)
+    save_name = "Weights/LightGCN_SCIF/lightgcn_dataset_{}_filler_{}_attack_{}_lr_{}_khop_{}_emb_{}.pth".format(args.dataset, args.n_fillers, args.attack, args.if_lr, args.k_hop, args.embed_size)
     unlearn = influence_unlearn(save_name=save_name,if_epoch=args.if_epoch, if_lr=args.if_lr, k_hop=args.k_hop, init_range=args.if_init_std)
     unlearn.attack = args.attack
     unlearn.compute_hessian_with_test(model=model,data_generator=data_generator)
@@ -289,7 +289,7 @@ def main(config_args):
     print("valid auc:",valid_auc)
     print("test auc:",test_auc)
 if __name__=='__main__':
-    os.environ["CUDA_VISIBLE_DEVICES"] = '0'
+    ##os.environ["CUDA_VISIBLE_DEVICES"] = '0'
 
     ATTACK_RATIOS = ('0.01', '0.03', '0.05')
 
@@ -310,7 +310,7 @@ if __name__=='__main__':
         config_args['lr'] = 1e-4
         config_args['regs'] = 0
         config_args['init_std'] = 1e-4
-        config_args['n_fillers'] = 100
+        config_args['n_fillers'] = int(os.environ.get('N_FILLERS', 150))
 
         main(config_args)
 

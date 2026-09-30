@@ -21,13 +21,13 @@ class model_hyparameters(object):
         super().__init__()
         self.embed_size = 48
         self.batch_size = 2048
-        self.epoch = 5000
+        self.epoch = 5
         self.data_path = 'Data/Process/'
         self.dataset = 'MovieLens'
         self.attack = '0.02'
         self.k_hop = 0
         self.data_type = 'full'
-        self.if_epoch = 5000
+        self.if_epoch = 5
         self.if_lr = 1e4
         self.if_init_std = 0
         self.seed = 1024

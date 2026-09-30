@@ -143,7 +143,7 @@ def main(config_args):
 
 
 if __name__ == '__main__':
-    os.environ["CUDA_VISIBLE_DEVICES"] = '0'
+    ##os.environ["CUDA_VISIBLE_DEVICES"] = '0'
 
     for attack in ATTACK_RATIOS:
         config = {
@@ -155,6 +155,7 @@ if __name__ == '__main__':
             'attack': attack,
             'seed': 1024,
             'init_std': 1e-4,
+            'n_fillers': int(os.environ.get('N_FILLERS', 150)),
         }
         main(config)
 

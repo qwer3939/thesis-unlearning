@@ -1,0 +1,118 @@
+
+(base) C:\Users\rooiu>conda activate thesis
+
+(thesis) C:\Users\rooiu>cd C:\Users\rooiu\Documents\thesis_project\IFRU
+
+(thesis) C:\Users\rooiu\Documents\thesis_project\IFRU>findstr "dataset\|epoch\|cuda\|save_name\|pth" sisa_lightgcn_book.py | head
+'head'은(는) 내부 또는 외부 명령, 실행할 수 있는 프로그램, 또는
+배치 파일이 아닙니다.
+
+(thesis) C:\Users\rooiu\Documents\thesis_project\IFRU>findstr "dataset\|epoch\|cuda\|save_name\|pth" sisa_lightgcn_book.py | head
+'head'은(는) 내부 또는 외부 명령, 실행할 수 있는 프로그램, 또는
+배치 파일이 아닙니다.
+
+(thesis) C:\Users\rooiu\Documents\thesis_project\IFRU>findstr "dataset\|epoch\|cuda\|save_name\|pth" eraser_lightgcn_book.py | head
+'head'은(는) 내부 또는 외부 명령, 실행할 수 있는 프로그램, 또는
+배치 파일이 아닙니다.
+
+(thesis) C:\Users\rooiu\Documents\thesis_project\IFRU>findstr "dataset\|epoch\|cuda\|save_name\|pth" scif_lightgcn_book_khop0.py | headfindstr "dataset epoch save_name" sisa_lightgcn_book.py
+'headfindstr'은(는) 내부 또는 외부 명령, 실행할 수 있는 프로그램, 또는
+배치 파일이 아닙니다.
+
+(thesis) C:\Users\rooiu\Documents\thesis_project\IFRU>findstr "dataset epoch save_name" sisa_lightgcn_book.py
+        self.epoch = 5000
+        self.dataset = 'BookCrossing'
+        self.best_epoch = 0
+    def update_and_isbest(self, eval_metric, epoch):
+            self.best_epoch = epoch
+                self.best_epoch = epoch
+        self.best_epoch = 0
+    data_generator = Data_for_RecEraser_LightGCN(args.data_path + args.dataset + '/' + args.attack, args.batch_size, args.part_type, args.part_num, args.part_T)
+        for epoch in range(args.epoch):
+                perf_str = '[local_model %d] epoch %d [%.4fs + %.4fs]: train_loss=[%.4f=%.4f + %.4f], [valid,test] auc=[%.4f, %.4f]' \
+                           (i, epoch, t2 - t1, t3 - t2, loss, bce_loss, reg_loss, valid_auc, test_auc)
+            is_best = e_stoper.update_and_isbest(one_result, epoch)
+    for epoch in range(args.epoch):
+            print("epoch: %d, time: %.6f, valid auc:%.6f, valid auc or:%.6f, valid auc and:%.6f, test auc:%.6f, test auc or:%.6f, test auc and:%.6f" %(epoch, t3-t2, valid_auc, valid_auc_or, valid_auc_and, test_auc, test_auc_or, test_auc_and))
+        is_best = e_stoper.update_and_isbest(one_result, epoch)
+            print("best epoch: ", e_stoper.best_epoch)
+        'dataset': 'BookCrossing',
+
+(thesis) C:\Users\rooiu\Documents\thesis_project\IFRU>
+(thesis) C:\Users\rooiu\Documents\thesis_project\IFRU>findstr "dataset epoch save_name" eraser_lightgcn_book.py
+        self.epoch = 5000
+        self.dataset = 'BookCrossing'
+        self.best_epoch = 0
+    def update_and_isbest(self, eval_metric, epoch):
+            self.best_epoch = epoch
+                self.best_epoch = epoch
+        self.best_epoch = 0
+    data_generator = Data_for_RecEraser_LightGCN(args.data_path + args.dataset + '/' + args.attack, args.batch_size, args.part_type, args.part_num, args.part_T)
+        for epoch in range(args.epoch):
+                perf_str = '[local_model %d] epoch %d [%.4fs + %.4fs]: train_loss=[%.4f=%.4f + %.4f], [valid,test] auc=[%.4f, %.4f]' \
+                           (i, epoch, t2 - t1, t3 - t2, loss, bce_loss, reg_loss, valid_auc, test_auc)
+            is_best = e_stoper.update_and_isbest(one_result, epoch)
+    for epoch in range(args.epoch):
+            print("epoch: %d, time: %.6f, valid auc:%.6f, valid auc or:%.6f, valid auc and:%.6f, test auc:%.6f, test auc or:%.6f, test auc and:%.6f" %(epoch, t3-t2, valid_auc, valid_auc_or, valid_auc_and, test_auc, test_auc_or, test_auc_and))
+        is_best = e_stoper.update_and_isbest(one_result, epoch)
+            print("best epoch: ", e_stoper.best_epoch)
+        'dataset': 'BookCrossing',
+
+(thesis) C:\Users\rooiu\Documents\thesis_project\IFRU>python -c "import sisa_lightgcn_movie_server_final; print('import OK')"
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+ModuleNotFoundError: No module named 'sisa_lightgcn_movie_server_final'
+
+(thesis) C:\Users\rooiu\Documents\thesis_project\IFRU>python sisa_lightgcn_movie_server_final.py
+python: can't open file 'C:\\Users\\rooiu\\Documents\\thesis_project\\IFRU\\sisa_lightgcn_movie_server_final.py': [Errno 2] No such file or directory
+
+(thesis) C:\Users\rooiu\Documents\thesis_project\IFRU>dir sisa*
+ C 드라이브의 볼륨에는 이름이 없습니다.
+ 볼륨 일련 번호: A413-0946
+
+ C:\Users\rooiu\Documents\thesis_project\IFRU 디렉터리
+
+2026-09-14  오후 11:54             9,280 sisa_lightgcn_amazon.py
+2026-09-25  오후 01:09             9,285 sisa_lightgcn_book.py
+2026-09-25  오후 01:14             9,480 sisa_lightgcn_movie_final.py
+2026-09-14  오후 11:54             9,157 sisa_mf_amazon.py
+2026-09-14  오후 11:54             9,163 sisa_mf_book.py
+               5개 파일              46,365 바이트
+               0개 디렉터리  269,203,083,264 바이트 남음
+
+(thesis) C:\Users\rooiu\Documents\thesis_project\IFRU>python -c "import sisa_lightgcn_movie_server_final; print('import OK')"
+import OK
+
+(thesis) C:\Users\rooiu\Documents\thesis_project\IFRU>copy eraser_lightgcn_book.py eraser_lightgcn_movie_server_final.py
+        1개 파일이 복사되었습니다.
+
+(thesis) C:\Users\rooiu\Documents\thesis_project\IFRU>python -c "import eraser_lightgcn_movie_server_final; print('import OK')"
+import OK
+
+(thesis) C:\Users\rooiu\Documents\thesis_project\IFRU>copy scif_lightgcn_book_khop0.py scif_lightgcn_movie_server_final.py
+        1개 파일이 복사되었습니다.
+
+(thesis) C:\Users\rooiu\Documents\thesis_project\IFRU>python -c "import scif_lightgcn_movie_server_final; print('import OK')"
+import OK
+
+(thesis) C:\Users\rooiu\Documents\thesis_project\IFRU>git add sisa_lightgcn_movie_server_final.py eraser_lightgcn_movie_server_final.py scif_lightgcn_movie_server_final.py
+
+(thesis) C:\Users\rooiu\Documents\thesis_project\IFRU>git commit -m "Add SISA/RecEraser/SCIF MovieLens serverversions"
+[main 380f99d] Add SISA/RecEraser/SCIF MovieLens server versions
+ 3 files changed, 806 insertions(+)
+ create mode 100644 eraser_lightgcn_movie_server_final.py
+ create mode 100644 scif_lightgcn_movie_server_final.py
+ create mode 100644 sisa_lightgcn_movie_server_final.py
+
+(thesis) C:\Users\rooiu\Documents\thesis_project\IFRU>git push origin main
+Enumerating objects: 6, done.
+Counting objects: 100% (6/6), done.
+Delta compression using up to 22 threads
+Compressing objects: 100% (5/5), done.
+Writing objects: 100% (5/5), 6.25 KiB | 6.25 MiB/s, done.
+Total 5 (delta 2), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (2/2), completed with 1 local object.
+To https://github.com/qwer3939/thesis-unlearning.git
+   c195bf8..380f99d  main -> main
+
+(thesis) C:\Users\rooiu\Documents\thesis_project\IFRU>

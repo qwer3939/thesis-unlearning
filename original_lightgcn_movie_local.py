@@ -18,7 +18,7 @@ class model_hyparameters(object):
         self.regs = 0
         self.embed_size = 32
         self.batch_size = 2048
-        self.epoch = 5
+        self.epoch = 200
         self.data_path = 'Data/Process/'
         self.dataset = 'MovieLens'
         self.attack = '0.01'

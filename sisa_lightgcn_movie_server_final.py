@@ -224,7 +224,7 @@ def main(config_args):
 
 
 if __name__ == '__main__':
-    os.environ["CUDA_VISIBLE_DEVICES"] = '0'
+    ##os.environ["CUDA_VISIBLE_DEVICES"] = '0'
 
     ATTACK_RATIOS = ('0.01', '0.03', '0.05')
 
@@ -238,7 +238,7 @@ if __name__ == '__main__':
             'dataset': 'MovieLens',
             'attack': attack,
             'seed': 1024,
-            'n_fillers': 100,
+            'n_fillers': int(os.environ.get('N_FILLERS', 150)),
             'part_type': 3, # 0: whole data, 1: interaction_based, 2: user_based, 3: random
         }
         main(config)

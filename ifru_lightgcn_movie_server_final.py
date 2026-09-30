@@ -278,6 +278,7 @@ def main(config_args):
         f'attack-{args.attack}-'
         f'seed-{args.seed}-'
         f'init_std-{args.init_std}-'
+        f'n_fillers-{args.n_fillers}-'
         'm.pth'
     )
 
@@ -319,7 +320,7 @@ def main(config_args):
     print("test auc:",test_auc)
 
 if __name__=='__main__':
-    os.environ["CUDA_VISIBLE_DEVICES"] = '0'
+    ##os.environ["CUDA_VISIBLE_DEVICES"] = '0'
 
     for attack in ATTACK_RATIOS:
         config_args = {}
@@ -338,6 +339,7 @@ if __name__=='__main__':
         config_args['lr'] = 1e-4
         config_args['regs'] = 0
         config_args['init_std'] = 1e-4
+        config_args['n_fillers'] = int(os.environ.get('N_FILLERS', 150))
 
         main(config_args)
 

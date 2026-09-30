@@ -1,0 +1,745 @@
+
+(base) C:\Users\rooiu>conda activate thesis
+
+(thesis) C:\Users\rooiu>cd C:\Users\rooiu\Documents\thesis_project\IFRU
+
+(thesis) C:\Users\rooiu\Documents\thesis_project\IFRU>powershell "Start-Transcript -PathC:\Users\rooiu\Documents\thesis_project\session_log3.txt"
+기록이 시작되었습니다. 출력 파일은 C:\Users\rooiu\Documents\thesis_project\session_log3.txt입니다.
+
+(thesis) C:\Users\rooiu\Documents\thesis_project\IFRU>dir
+ C 드라이브의 볼륨에는 이름이 없습니다.
+ 볼륨 일련 번호: A413-0946
+
+ C:\Users\rooiu\Documents\thesis_project\IFRU 디렉터리
+
+2026-09-15  오후 09:15    <DIR>          .
+2026-09-16  오후 09:26    <DIR>          ..
+2026-09-15  오후 09:22             3,421 .gitignore
+2026-09-15  오후 08:49    <DIR>          attack_output
+2026-09-15  오후 12:32    <DIR>          Data
+2026-09-15  오후 08:19            10,753 detect_anomaly.py
+2026-09-14  오후 11:54             9,283 eraser_lightgcn_amazon.py
+2026-09-14  오후 11:54             9,289 eraser_lightgcn_book.py
+2026-09-14  오후 11:54             9,159 eraser_mf_amazon.py
+2026-09-14  오후 11:54             9,165 eraser_mf_book.py
+2026-09-15  오후 02:45            77,960 example_scores.csv
+2026-09-14  오후 11:54            14,319 ifru_lightgcn_amazon_khop1.py
+2026-09-14  오후 11:54            14,341 ifru_lightgcn_book_khop1.py
+2026-09-15  오후 02:37            14,293 ifru_lightgcn_book_khop1_local.py
+2026-09-15  오후 03:58            14,284 ifru_lightgcn_movie_khop1_local.py
+2026-09-14  오후 11:54            12,017 ifru_mf_amazon_khop0.py
+2026-09-14  오후 11:54            12,828 ifru_mf_amazon_khop1.py
+2026-09-14  오후 11:54            12,180 ifru_mf_book_khop0.py
+2026-09-14  오후 11:54            12,799 ifru_mf_book_khop1.py
+2026-09-15  오후 09:33             6,323 inject_attack.py
+2026-09-14  오후 11:54             1,087 LICENSE
+2026-09-15  오후 02:44               390 make_example_scores.py
+2026-09-15  오후 04:03             3,568 measure_exposure.py
+2026-09-15  오후 12:43    <DIR>          Model
+2026-09-14  오후 11:54             4,860 original_lightgcn_amazon.py
+2026-09-14  오후 11:54             4,866 original_lightgcn_book.py
+2026-09-15  오후 03:57             4,838 original_lightgcn_book_local.py
+2026-09-15  오후 03:58             4,832 original_lightgcn_movie_local.py
+2026-09-14  오후 11:54             5,090 original_mf_amazon.py
+2026-09-14  오후 11:54             5,096 original_mf_book.py
+2026-09-14  오후 11:54             1,489 README.md
+2026-09-14  오후 11:54             4,869 retrain_lightgcn_amazon.py
+2026-09-14  오후 11:54             4,875 retrain_lightgcn_book.py
+2026-09-15  오후 08:31             4,840 retrain_lightgcn_movie_local.py
+2026-09-14  오후 11:54             5,060 retrain_mf_amazon.py
+2026-09-14  오후 11:54             5,066 retrain_mf_book.py
+2026-09-14  오후 11:54            13,401 scif_lightgcn_amazon_khop0.py
+2026-09-14  오후 11:54            13,419 scif_lightgcn_book_khop0.py
+2026-09-14  오후 11:54            13,093 scif_mf_amazon_khop0.py
+2026-09-14  오후 11:54            13,112 scif_mf_book_khop0.py
+2026-09-14  오후 11:54             9,280 sisa_lightgcn_amazon.py
+2026-09-14  오후 11:54             9,285 sisa_lightgcn_book.py
+2026-09-14  오후 11:54             9,157 sisa_mf_amazon.py
+2026-09-14  오후 11:54             9,163 sisa_mf_book.py
+2026-09-15  오후 10:41             9,227 suspicious_users.txt
+2026-09-15  오후 12:43    <DIR>          utility
+2026-09-15  오후 02:38    <DIR>          Weights
+2026-09-15  오후 03:55             4,899 _data_process.py
+2026-09-14  오후 11:54             4,737 _data_process_backup.py
+2026-09-14  오후 11:54             1,357 _partion_aux_generate.py
+2026-09-14  오후 11:54             1,151 _scif_generate_labels.py
+              44개 파일             414,521 바이트
+               7개 디렉터리  269,330,821,120 바이트 남음
+
+(thesis) C:\Users\rooiu\Documents\thesis_project\IFRU>copy original_lightgcn_book.py original_lightgcn_movie_server.py
+        1개 파일이 복사되었습니다.
+
+(thesis) C:\Users\rooiu\Documents\thesis_project\IFRU>copy ifru_lightgcn_book_khop1.py ifru_lightgcn_movie_server.py
+        1개 파일이 복사되었습니다.
+
+(thesis) C:\Users\rooiu\Documents\thesis_project\IFRU>copy retrain_lightgcn_book.py retrain_lightgcn_movie_server.py
+        1개 파일이 복사되었습니다.
+
+(thesis) C:\Users\rooiu\Documents\thesis_project\IFRU>python inject_attack.py --input "C:\Users\rooiu\Documents\thesis_project\Movielens\ml-1m\ratings.dat" --output-dir attack_output --attack-ratio all
+0.01: 60 fake users, 1006269 expected total ratings
+  attack_output\ratings_attacked_0.01.dat | attack_output\fake_users_0.01.txt
+0.03: 181 fake users, 1018490 expected total ratings
+  attack_output\ratings_attacked_0.03.dat | attack_output\fake_users_0.03.txt
+0.05: 302 fake users, 1030711 expected total ratings
+  attack_output\ratings_attacked_0.05.dat | attack_output\fake_users_0.05.txt
+targets: [1872] -> attack_output\target_items.txt
+fillers per fake user: 50 top-100 + 50 other
+
+(thesis) C:\Users\rooiu\Documents\thesis_project\IFRU>python detect_anomaly.py attack_output\ratings_attacked_0.03.dat
+입력 파일: attack_output\ratings_attacked_0.03.dat
+===== Anomaly Detection =====
+
+전체 평점 수: 1018490
+전체 사용자 수: 6221
+
+===== Rule 1: Interaction Count =====
+사용자 평균 상호작용 수: 163.72
+표준편차: 190.23
+Z-score threshold: 3.0
+Rule 1 의심 사용자 수: 149
+
+의심 사용자:
+User 195 | interactions=822 | z-score=3.46
+User 216 | interactions=794 | z-score=3.31
+User 245 | interactions=764 | z-score=3.16
+User 302 | interactions=788 | z-score=3.28
+User 329 | interactions=764 | z-score=3.16
+User 352 | interactions=870 | z-score=3.71
+User 424 | interactions=1226 | z-score=5.58
+User 482 | interactions=825 | z-score=3.48
+User 524 | interactions=1016 | z-score=4.48
+User 531 | interactions=867 | z-score=3.70
+User 549 | interactions=1152 | z-score=5.20
+User 550 | interactions=967 | z-score=4.22
+User 678 | interactions=999 | z-score=4.39
+User 710 | interactions=885 | z-score=3.79
+User 752 | interactions=1024 | z-score=4.52
+User 770 | interactions=759 | z-score=3.13
+User 839 | interactions=774 | z-score=3.21
+User 869 | interactions=842 | z-score=3.57
+User 881 | interactions=914 | z-score=3.94
+User 889 | interactions=1518 | z-score=7.12
+User 1010 | interactions=1004 | z-score=4.42
+User 1015 | interactions=1286 | z-score=5.90
+User 1019 | interactions=928 | z-score=4.02
+User 1051 | interactions=862 | z-score=3.67
+User 1088 | interactions=1176 | z-score=5.32
+User 1117 | interactions=754 | z-score=3.10
+User 1120 | interactions=735 | z-score=3.00
+User 1150 | interactions=1302 | z-score=5.98
+User 1181 | interactions=1521 | z-score=7.13
+User 1203 | interactions=741 | z-score=3.03
+User 1285 | interactions=1144 | z-score=5.15
+User 1317 | interactions=799 | z-score=3.34
+User 1340 | interactions=805 | z-score=3.37
+User 1383 | interactions=822 | z-score=3.46
+User 1425 | interactions=778 | z-score=3.23
+User 1447 | interactions=990 | z-score=4.34
+User 1448 | interactions=1038 | z-score=4.60
+User 1449 | interactions=1243 | z-score=5.67
+User 1451 | interactions=751 | z-score=3.09
+User 1579 | interactions=765 | z-score=3.16
+User 1605 | interactions=964 | z-score=4.21
+User 1613 | interactions=795 | z-score=3.32
+User 1632 | interactions=768 | z-score=3.18
+User 1635 | interactions=793 | z-score=3.31
+User 1647 | interactions=882 | z-score=3.78
+User 1676 | interactions=865 | z-score=3.69
+User 1680 | interactions=1850 | z-score=8.86
+User 1698 | interactions=957 | z-score=4.17
+User 1733 | interactions=839 | z-score=3.55
+User 1737 | interactions=775 | z-score=3.21
+User 1835 | interactions=770 | z-score=3.19
+User 1837 | interactions=782 | z-score=3.25
+User 1880 | interactions=955 | z-score=4.16
+User 1899 | interactions=756 | z-score=3.11
+User 1912 | interactions=947 | z-score=4.12
+User 1941 | interactions=1595 | z-score=7.52
+User 1958 | interactions=852 | z-score=3.62
+User 1980 | interactions=1260 | z-score=5.76
+User 2015 | interactions=903 | z-score=3.89
+User 2063 | interactions=1323 | z-score=6.09
+User 2106 | interactions=900 | z-score=3.87
+User 2109 | interactions=749 | z-score=3.08
+User 2116 | interactions=971 | z-score=4.24
+User 2181 | interactions=915 | z-score=3.95
+User 2304 | interactions=873 | z-score=3.73
+User 2507 | interactions=859 | z-score=3.65
+User 2529 | interactions=812 | z-score=3.41
+User 2665 | interactions=828 | z-score=3.49
+User 2777 | interactions=875 | z-score=3.74
+User 2793 | interactions=789 | z-score=3.29
+User 2820 | interactions=894 | z-score=3.84
+User 2857 | interactions=795 | z-score=3.32
+User 2907 | interactions=849 | z-score=3.60
+User 2909 | interactions=1258 | z-score=5.75
+User 3029 | interactions=761 | z-score=3.14
+User 3032 | interactions=1019 | z-score=4.50
+User 3067 | interactions=826 | z-score=3.48
+User 3163 | interactions=858 | z-score=3.65
+User 3224 | interactions=1115 | z-score=5.00
+User 3272 | interactions=836 | z-score=3.53
+User 3292 | interactions=939 | z-score=4.08
+User 3311 | interactions=920 | z-score=3.98
+User 3391 | interactions=1216 | z-score=5.53
+User 3401 | interactions=837 | z-score=3.54
+User 3471 | interactions=824 | z-score=3.47
+User 3507 | interactions=923 | z-score=3.99
+User 3526 | interactions=962 | z-score=4.20
+User 3539 | interactions=1078 | z-score=4.81
+User 3618 | interactions=1344 | z-score=6.20
+User 3626 | interactions=855 | z-score=3.63
+User 3650 | interactions=785 | z-score=3.27
+User 3675 | interactions=849 | z-score=3.60
+User 3705 | interactions=792 | z-score=3.30
+User 3778 | interactions=941 | z-score=4.09
+User 3792 | interactions=821 | z-score=3.46
+User 3808 | interactions=1158 | z-score=5.23
+User 3824 | interactions=1018 | z-score=4.49
+User 3829 | interactions=822 | z-score=3.46
+User 3841 | interactions=1216 | z-score=5.53
+User 3999 | interactions=742 | z-score=3.04
+User 4021 | interactions=765 | z-score=3.16
+User 4041 | interactions=844 | z-score=3.58
+User 4064 | interactions=1009 | z-score=4.44
+User 4083 | interactions=766 | z-score=3.17
+User 4085 | interactions=829 | z-score=3.50
+User 4140 | interactions=735 | z-score=3.00
+User 4169 | interactions=2314 | z-score=11.30
+User 4227 | interactions=1222 | z-score=5.56
+User 4238 | interactions=819 | z-score=3.44
+User 4277 | interactions=1743 | z-score=8.30
+User 4312 | interactions=883 | z-score=3.78
+User 4344 | interactions=1271 | z-score=5.82
+User 4386 | interactions=873 | z-score=3.73
+User 4387 | interactions=743 | z-score=3.05
+User 4425 | interactions=934 | z-score=4.05
+User 4447 | interactions=982 | z-score=4.30
+User 4448 | interactions=1014 | z-score=4.47
+User 4482 | interactions=782 | z-score=3.25
+User 4508 | interactions=1211 | z-score=5.51
+User 4510 | interactions=1240 | z-score=5.66
+User 4543 | interactions=1050 | z-score=4.66
+User 4647 | interactions=893 | z-score=3.83
+User 4682 | interactions=784 | z-score=3.26
+User 4725 | interactions=1006 | z-score=4.43
+User 4808 | interactions=939 | z-score=4.08
+User 4957 | interactions=744 | z-score=3.05
+User 4979 | interactions=882 | z-score=3.78
+User 5026 | interactions=874 | z-score=3.73
+User 5046 | interactions=868 | z-score=3.70
+User 5074 | interactions=761 | z-score=3.14
+User 5100 | interactions=853 | z-score=3.62
+User 5111 | interactions=800 | z-score=3.34
+User 5256 | interactions=825 | z-score=3.48
+User 5333 | interactions=839 | z-score=3.55
+User 5367 | interactions=1169 | z-score=5.28
+User 5394 | interactions=849 | z-score=3.60
+User 5605 | interactions=736 | z-score=3.01
+User 5614 | interactions=837 | z-score=3.54
+User 5627 | interactions=815 | z-score=3.42
+User 5636 | interactions=848 | z-score=3.60
+User 5643 | interactions=1047 | z-score=4.64
+User 5788 | interactions=825 | z-score=3.48
+User 5795 | interactions=1277 | z-score=5.85
+User 5812 | interactions=893 | z-score=3.83
+User 5831 | interactions=1220 | z-score=5.55
+User 5880 | interactions=748 | z-score=3.07
+User 5954 | interactions=1000 | z-score=4.40
+User 6016 | interactions=909 | z-score=3.92
+User 6036 | interactions=888 | z-score=3.81
+
+===== Rule 2: Rating Variance =====
+Variance threshold: 0.1
+Rule 2 의심 사용자 수: 4
+
+의심 사용자:
+User 283 | interactions=27 | variance=0.0370
+User 2339 | interactions=23 | variance=0.0435
+User 3598 | interactions=65 | variance=0.0154
+User 4486 | interactions=51 | variance=0.0965
+
+===== Rule 3: Popularity Concentration =====
+인기 아이템 기준: 상위 10%
+인기 아이템 수: 370
+Popularity threshold: 0.8
+Rule 3 의심 사용자 수: 181
+
+의심 사용자:
+User 4 | interactions=21 | popular=19 | ratio=0.90
+User 7 | interactions=31 | popular=29 | ratio=0.94
+User 20 | interactions=24 | popular=20 | ratio=0.83
+User 84 | interactions=31 | popular=28 | ratio=0.90
+User 177 | interactions=44 | popular=36 | ratio=0.82
+User 196 | interactions=32 | popular=26 | ratio=0.81
+User 197 | interactions=22 | popular=19 | ratio=0.86
+User 215 | interactions=34 | popular=29 | ratio=0.85
+User 217 | interactions=20 | popular=16 | ratio=0.80
+User 236 | interactions=62 | popular=51 | ratio=0.82
+User 263 | interactions=92 | popular=78 | ratio=0.85
+User 277 | interactions=22 | popular=21 | ratio=0.95
+User 286 | interactions=43 | popular=38 | ratio=0.88
+User 311 | interactions=20 | popular=18 | ratio=0.90
+User 373 | interactions=27 | popular=24 | ratio=0.89
+User 397 | interactions=34 | popular=29 | ratio=0.85
+User 400 | interactions=40 | popular=34 | ratio=0.85
+User 427 | interactions=27 | popular=22 | ratio=0.81
+User 440 | interactions=29 | popular=26 | ratio=0.90
+User 443 | interactions=34 | popular=28 | ratio=0.82
+User 483 | interactions=29 | popular=24 | ratio=0.83
+User 547 | interactions=78 | popular=64 | ratio=0.82
+User 578 | interactions=28 | popular=26 | ratio=0.93
+User 609 | interactions=52 | popular=46 | ratio=0.88
+User 615 | interactions=94 | popular=76 | ratio=0.81
+User 674 | interactions=79 | popular=71 | ratio=0.90
+User 742 | interactions=42 | popular=34 | ratio=0.81
+User 756 | interactions=35 | popular=28 | ratio=0.80
+User 758 | interactions=29 | popular=24 | ratio=0.83
+User 761 | interactions=20 | popular=16 | ratio=0.80
+User 762 | interactions=46 | popular=38 | ratio=0.83
+User 803 | interactions=52 | popular=44 | ratio=0.85
+User 814 | interactions=36 | popular=29 | ratio=0.81
+User 852 | interactions=34 | popular=30 | ratio=0.88
+User 876 | interactions=111 | popular=89 | ratio=0.80
+User 1157 | interactions=22 | popular=19 | ratio=0.86
+User 1188 | interactions=31 | popular=27 | ratio=0.87
+User 1245 | interactions=36 | popular=30 | ratio=0.83
+User 1269 | interactions=32 | popular=27 | ratio=0.84
+User 1304 | interactions=84 | popular=72 | ratio=0.86
+User 1308 | interactions=89 | popular=73 | ratio=0.82
+User 1351 | interactions=20 | popular=17 | ratio=0.85
+User 1384 | interactions=22 | popular=19 | ratio=0.86
+User 1412 | interactions=24 | popular=20 | ratio=0.83
+User 1485 | interactions=23 | popular=20 | ratio=0.87
+User 1493 | interactions=20 | popular=16 | ratio=0.80
+User 1520 | interactions=23 | popular=20 | ratio=0.87
+User 1578 | interactions=31 | popular=25 | ratio=0.81
+User 1664 | interactions=20 | popular=16 | ratio=0.80
+User 1703 | interactions=26 | popular=22 | ratio=0.85
+User 1763 | interactions=26 | popular=21 | ratio=0.81
+User 1830 | interactions=30 | popular=25 | ratio=0.83
+User 1849 | interactions=24 | popular=23 | ratio=0.96
+User 1914 | interactions=23 | popular=19 | ratio=0.83
+User 1993 | interactions=20 | popular=16 | ratio=0.80
+User 1994 | interactions=29 | popular=25 | ratio=0.86
+User 2083 | interactions=40 | popular=33 | ratio=0.82
+User 2191 | interactions=38 | popular=31 | ratio=0.82
+User 2226 | interactions=52 | popular=42 | ratio=0.81
+User 2227 | interactions=48 | popular=40 | ratio=0.83
+User 2262 | interactions=133 | popular=107 | ratio=0.80
+User 2347 | interactions=23 | popular=21 | ratio=0.91
+User 2388 | interactions=22 | popular=20 | ratio=0.91
+User 2394 | interactions=71 | popular=57 | ratio=0.80
+User 2433 | interactions=34 | popular=28 | ratio=0.82
+User 2521 | interactions=54 | popular=47 | ratio=0.87
+User 2539 | interactions=41 | popular=37 | ratio=0.90
+User 2587 | interactions=31 | popular=25 | ratio=0.81
+User 2591 | interactions=41 | popular=34 | ratio=0.83
+User 2598 | interactions=27 | popular=22 | ratio=0.81
+User 2644 | interactions=21 | popular=17 | ratio=0.81
+User 2646 | interactions=23 | popular=21 | ratio=0.91
+User 2658 | interactions=31 | popular=26 | ratio=0.84
+User 2678 | interactions=42 | popular=35 | ratio=0.83
+User 2689 | interactions=101 | popular=81 | ratio=0.80
+User 2706 | interactions=25 | popular=20 | ratio=0.80
+User 2717 | interactions=25 | popular=21 | ratio=0.84
+User 2729 | interactions=23 | popular=19 | ratio=0.83
+User 2758 | interactions=29 | popular=24 | ratio=0.83
+User 2789 | interactions=94 | popular=76 | ratio=0.81
+User 2816 | interactions=22 | popular=18 | ratio=0.82
+User 2817 | interactions=82 | popular=67 | ratio=0.82
+User 2831 | interactions=36 | popular=30 | ratio=0.83
+User 2923 | interactions=21 | popular=17 | ratio=0.81
+User 2940 | interactions=31 | popular=25 | ratio=0.81
+User 2957 | interactions=64 | popular=53 | ratio=0.83
+User 2960 | interactions=31 | popular=25 | ratio=0.81
+User 3048 | interactions=70 | popular=59 | ratio=0.84
+User 3061 | interactions=32 | popular=29 | ratio=0.91
+User 3073 | interactions=57 | popular=47 | ratio=0.82
+User 3160 | interactions=25 | popular=21 | ratio=0.84
+User 3165 | interactions=30 | popular=24 | ratio=0.80
+User 3166 | interactions=40 | popular=34 | ratio=0.85
+User 3190 | interactions=36 | popular=29 | ratio=0.81
+User 3269 | interactions=83 | popular=67 | ratio=0.81
+User 3335 | interactions=27 | popular=23 | ratio=0.85
+User 3407 | interactions=20 | popular=16 | ratio=0.80
+User 3447 | interactions=85 | popular=68 | ratio=0.80
+User 3461 | interactions=37 | popular=30 | ratio=0.81
+User 3506 | interactions=68 | popular=55 | ratio=0.81
+User 3523 | interactions=39 | popular=34 | ratio=0.87
+User 3553 | interactions=47 | popular=39 | ratio=0.83
+User 3556 | interactions=112 | popular=92 | ratio=0.82
+User 3595 | interactions=31 | popular=25 | ratio=0.81
+User 3616 | interactions=21 | popular=19 | ratio=0.90
+User 3631 | interactions=40 | popular=34 | ratio=0.85
+User 3694 | interactions=53 | popular=45 | ratio=0.85
+User 3723 | interactions=39 | popular=33 | ratio=0.85
+User 3784 | interactions=41 | popular=36 | ratio=0.88
+User 3820 | interactions=45 | popular=36 | ratio=0.80
+User 3863 | interactions=25 | popular=23 | ratio=0.92
+User 3933 | interactions=24 | popular=20 | ratio=0.83
+User 3954 | interactions=43 | popular=37 | ratio=0.86
+User 3960 | interactions=28 | popular=23 | ratio=0.82
+User 3977 | interactions=30 | popular=26 | ratio=0.87
+User 4065 | interactions=21 | popular=17 | ratio=0.81
+User 4159 | interactions=22 | popular=19 | ratio=0.86
+User 4197 | interactions=23 | popular=19 | ratio=0.83
+User 4231 | interactions=50 | popular=40 | ratio=0.80
+User 4263 | interactions=38 | popular=31 | ratio=0.82
+User 4313 | interactions=96 | popular=80 | ratio=0.83
+User 4341 | interactions=33 | popular=27 | ratio=0.82
+User 4368 | interactions=131 | popular=105 | ratio=0.80
+User 4376 | interactions=58 | popular=48 | ratio=0.83
+User 4392 | interactions=25 | popular=20 | ratio=0.80
+User 4536 | interactions=34 | popular=28 | ratio=0.82
+User 4545 | interactions=30 | popular=25 | ratio=0.83
+User 4547 | interactions=20 | popular=16 | ratio=0.80
+User 4563 | interactions=40 | popular=32 | ratio=0.80
+User 4603 | interactions=37 | popular=30 | ratio=0.81
+User 4638 | interactions=37 | popular=30 | ratio=0.81
+User 4642 | interactions=33 | popular=31 | ratio=0.94
+User 4668 | interactions=32 | popular=26 | ratio=0.81
+User 4701 | interactions=63 | popular=51 | ratio=0.81
+User 4702 | interactions=44 | popular=38 | ratio=0.86
+User 4731 | interactions=55 | popular=50 | ratio=0.91
+User 4770 | interactions=33 | popular=27 | ratio=0.82
+User 4857 | interactions=61 | popular=51 | ratio=0.84
+User 4864 | interactions=33 | popular=27 | ratio=0.82
+User 4919 | interactions=37 | popular=31 | ratio=0.84
+User 4982 | interactions=37 | popular=34 | ratio=0.92
+User 5003 | interactions=33 | popular=28 | ratio=0.85
+User 5027 | interactions=20 | popular=16 | ratio=0.80
+User 5088 | interactions=31 | popular=27 | ratio=0.87
+User 5094 | interactions=59 | popular=50 | ratio=0.85
+User 5168 | interactions=20 | popular=18 | ratio=0.90
+User 5189 | interactions=42 | popular=34 | ratio=0.81
+User 5206 | interactions=29 | popular=24 | ratio=0.83
+User 5228 | interactions=24 | popular=20 | ratio=0.83
+User 5237 | interactions=55 | popular=49 | ratio=0.89
+User 5243 | interactions=26 | popular=21 | ratio=0.81
+User 5309 | interactions=20 | popular=17 | ratio=0.85
+User 5381 | interactions=24 | popular=20 | ratio=0.83
+User 5385 | interactions=46 | popular=39 | ratio=0.85
+User 5392 | interactions=22 | popular=19 | ratio=0.86
+User 5477 | interactions=25 | popular=22 | ratio=0.88
+User 5478 | interactions=34 | popular=29 | ratio=0.85
+User 5489 | interactions=70 | popular=56 | ratio=0.80
+User 5510 | interactions=62 | popular=54 | ratio=0.87
+User 5541 | interactions=27 | popular=22 | ratio=0.81
+User 5560 | interactions=82 | popular=68 | ratio=0.83
+User 5581 | interactions=37 | popular=33 | ratio=0.89
+User 5633 | interactions=39 | popular=33 | ratio=0.85
+User 5731 | interactions=60 | popular=49 | ratio=0.82
+User 5745 | interactions=72 | popular=59 | ratio=0.82
+User 5873 | interactions=33 | popular=28 | ratio=0.85
+User 5876 | interactions=23 | popular=20 | ratio=0.87
+User 5879 | interactions=55 | popular=45 | ratio=0.82
+User 5882 | interactions=40 | popular=35 | ratio=0.88
+User 5918 | interactions=23 | popular=19 | ratio=0.83
+User 5921 | interactions=46 | popular=40 | ratio=0.87
+User 5931 | interactions=77 | popular=69 | ratio=0.90
+User 5936 | interactions=36 | popular=29 | ratio=0.81
+User 5951 | interactions=53 | popular=46 | ratio=0.87
+User 5962 | interactions=25 | popular=21 | ratio=0.84
+User 5975 | interactions=54 | popular=46 | ratio=0.85
+User 5983 | interactions=28 | popular=23 | ratio=0.82
+User 5984 | interactions=30 | popular=26 | ratio=0.87
+User 5994 | interactions=78 | popular=63 | ratio=0.81
+User 6008 | interactions=35 | popular=32 | ratio=0.91
+User 6021 | interactions=132 | popular=108 | ratio=0.82
+
+===== Summary =====
+전체 사용자 수: 6221
+전체 의심 사용자 수: 334
+Rule 1 검출 수: 149
+Rule 2 검출 수: 4
+Rule 3 검출 수: 181
+
+의심 사용자 목록 저장 완료: C:\Users\rooiu\Documents\thesis_project\IFRU\suspicious_users.txt
+
+(thesis) C:\Users\rooiu\Documents\thesis_project\IFRU>copy _data_process.py _data_process_backup2.py
+        1개 파일이 복사되었습니다.
+
+(thesis) C:\Users\rooiu\Documents\thesis_project\IFRU>git checkout load_data.py
+error: pathspec 'load_data.py' did not match any file(s) known to git
+
+(thesis) C:\Users\rooiu\Documents\thesis_project\IFRU>git checkout utility/load_data.py
+Updated 0 paths from the index
+
+(thesis) C:\Users\rooiu\Documents\thesis_project\IFRU>git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   _data_process.py
+        modified:   ifru_lightgcn_movie_khop1_local.py
+        modified:   inject_attack.py
+        modified:   original_lightgcn_movie_local.py
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        _data_process_backup2.py
+        attack_output_backup/
+        ifru_lightgcn_movie_server.py
+        original_lightgcn_movie_server.py
+        retrain_lightgcn_movie_server.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+(thesis) C:\Users\rooiu\Documents\thesis_project\IFRU>git restore ifru_lightgcn_movie_khop1_local.py
+
+(thesis) C:\Users\rooiu\Documents\thesis_project\IFRU>git restore --source=HEAD --staged--worktree utility/load_data.py
+
+(thesis) C:\Users\rooiu\Documents\thesis_project\IFRU>git restore --source=HEAD --staged--worktree Model/Lightgcn.py
+
+(thesis) C:\Users\rooiu\Documents\thesis_project\IFRU>git log --oneline --all
+5a71b03 (HEAD -> main, origin/main) Add MovieLens pipeline and team scripts
+4f896d6 Add local CPU versions and gitignore for data files
+15ed12e (upstream/main, upstream/HEAD) Update README.md
+c664c1e Update README.md
+2f029ab Update README.md
+01d6d69 Update download.txt
+99c2b0b Delete Weights/MF directory
+64b99cb Delete Weights/LightGCN directory
+daddbe7 Create download.txt
+5df9321 Rename Note.txt to download.txt
+287fcd2 Create Note.txt
+7c2eaba Update scif_lightgcn_amazon_khop0.py
+e173066 Update scif_lightgcn_book_khop0.py
+b42a9ef Update scif_lightgcn_book_khop0.py
+1151971 Update _partion_aux_generate.py
+1d21a77 X
+ccdcb07 upload_240620
+c2a2c63 Create x.py
+15ed4fa X
+1d23438 upload_240620
+b602879 Create xxx.py
+ae4a883 upload_240620
+25ba5f4 Create compute.py
+0c854e3 upload_240620
+bbe749d Create Eraser.py
+0c6bad1 upload_240620
+51bee8c Initial commit
+
+(thesis) C:\Users\rooiu\Documents\thesis_project\IFRU>git restore --source=15ed12e -- utility/load_data.py
+
+(thesis) C:\Users\rooiu\Documents\thesis_project\IFRU>git restore --source=15ed12e -- utility/compute.py
+
+(thesis) C:\Users\rooiu\Documents\thesis_project\IFRU>git restore --source=15ed12e -- Model/Lightgcn.py
+
+(thesis) C:\Users\rooiu\Documents\thesis_project\IFRU>git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   Model/Lightgcn.py
+        modified:   _data_process.py
+        modified:   ifru_lightgcn_movie_khop1_local.py
+        modified:   inject_attack.py
+        modified:   original_lightgcn_movie_local.py
+        modified:   utility/compute.py
+        modified:   utility/load_data.py
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        _data_process_backup2.py
+        attack_output_backup/
+        ifru_lightgcn_movie_server.py
+        original_lightgcn_movie_server.py
+        retrain_lightgcn_movie_server.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+(thesis) C:\Users\rooiu\Documents\thesis_project\IFRU>git add _data_process.py
+
+(thesis) C:\Users\rooiu\Documents\thesis_project\IFRU>git add inject_attack.py
+
+(thesis) C:\Users\rooiu\Documents\thesis_project\IFRU>
+(thesis) C:\Users\rooiu\Documents\thesis_project\IFRU>git add ifru_lightgcn_movie_server.py
+
+(thesis) C:\Users\rooiu\Documents\thesis_project\IFRU>git add original_lightgcn_movie_server.py
+
+(thesis) C:\Users\rooiu\Documents\thesis_project\IFRU>git add retrain_lightgcn_movie_server.py
+
+(thesis) C:\Users\rooiu\Documents\thesis_project\IFRU>
+(thesis) C:\Users\rooiu\Documents\thesis_project\IFRU>git add utility/load_data.py
+
+(thesis) C:\Users\rooiu\Documents\thesis_project\IFRU>git add utility/compute.py
+
+(thesis) C:\Users\rooiu\Documents\thesis_project\IFRU>git add Model/Lightgcn.py
+
+(thesis) C:\Users\rooiu\Documents\thesis_project\IFRU>git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   Model/Lightgcn.py
+        modified:   _data_process.py
+        new file:   ifru_lightgcn_movie_server.py
+        modified:   inject_attack.py
+        new file:   original_lightgcn_movie_server.py
+        new file:   retrain_lightgcn_movie_server.py
+        modified:   utility/compute.py
+        modified:   utility/load_data.py
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   ifru_lightgcn_movie_khop1_local.py
+        modified:   original_lightgcn_movie_local.py
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        _data_process_backup2.py
+        attack_output_backup/
+
+
+(thesis) C:\Users\rooiu\Documents\thesis_project\IFRU>git commit -m "Update MovieLens attack pipeline and restore GPU support"
+[main 23c0a1c] Update MovieLens attack pipeline and restore GPU support
+ 8 files changed, 967 insertions(+), 149 deletions(-)
+ create mode 100644 ifru_lightgcn_movie_server.py
+ create mode 100644 original_lightgcn_movie_server.py
+ create mode 100644 retrain_lightgcn_movie_server.py
+
+(thesis) C:\Users\rooiu\Documents\thesis_project\IFRU>git push
+Enumerating objects: 20, done.
+Counting objects: 100% (20/20), done.
+Delta compression using up to 22 threads
+Compressing objects: 100% (12/12), done.
+Writing objects: 100% (12/12), 9.44 KiB | 3.15 MiB/s, done.
+Total 12 (delta 6), reused 2 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (6/6), completed with 5 local objects.
+To https://github.com/qwer3939/thesis-unlearning.git
+   5a71b03..23c0a1c  main -> main
+
+(thesis) C:\Users\rooiu\Documents\thesis_project\IFRU>git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   ifru_lightgcn_movie_khop1_local.py
+        modified:   original_lightgcn_movie_local.py
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        _data_process_backup2.py
+        attack_output_backup/
+        ifru_lightgcn_movie_server_final.py
+        original_lightgcn_movie_server_final.py
+        retrain_lightgcn_movie_server_final.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+(thesis) C:\Users\rooiu\Documents\thesis_project\IFRU>git add original_lightgcn_movie_server_final.py
+warning: in the working copy of 'original_lightgcn_movie_server_final.py', LF will be replaced by CRLF the next time Git touches it
+
+(thesis) C:\Users\rooiu\Documents\thesis_project\IFRU>git add retrain_lightgcn_movie_server_final.py
+warning: in the working copy of 'retrain_lightgcn_movie_server_final.py', LF will be replaced by CRLF the next time Git touches it
+
+(thesis) C:\Users\rooiu\Documents\thesis_project\IFRU>git add ifru_lightgcn_movie_server_final.py
+warning: in the working copy of 'ifru_lightgcn_movie_server_final.py', LF will be replaced by CRLF the next time Git touches it
+
+(thesis) C:\Users\rooiu\Documents\thesis_project\IFRU>git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   ifru_lightgcn_movie_server_final.py
+        new file:   original_lightgcn_movie_server_final.py
+        new file:   retrain_lightgcn_movie_server_final.py
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   ifru_lightgcn_movie_khop1_local.py
+        modified:   original_lightgcn_movie_local.py
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        _data_process_backup2.py
+        attack_output_backup/
+
+
+(thesis) C:\Users\rooiu\Documents\thesis_project\IFRU>git commit -m "Add final MovieLensexperiment scripts"
+[main 7780bf7] Add final MovieLens experiment scripts
+ 3 files changed, 665 insertions(+)
+ create mode 100644 ifru_lightgcn_movie_server_final.py
+ create mode 100644 original_lightgcn_movie_server_final.py
+ create mode 100644 retrain_lightgcn_movie_server_final.py
+
+(thesis) C:\Users\rooiu\Documents\thesis_project\IFRU>git push
+Enumerating objects: 6, done.
+Counting objects: 100% (6/6), done.
+Delta compression using up to 22 threads
+Compressing objects: 100% (5/5), done.
+Writing objects: 100% (5/5), 5.86 KiB | 5.86 MiB/s, done.
+Total 5 (delta 2), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (2/2), completed with 1 local object.
+To https://github.com/qwer3939/thesis-unlearning.git
+   23c0a1c..7780bf7  main -> main
+
+(thesis) C:\Users\rooiu\Documents\thesis_project\IFRU>python -m py_compile original_lightgcn_movie_server_final.py retrain_lightgcn_movie_server_final.py ifru_lightgcn_movie_server_final.py
+
+(thesis) C:\Users\rooiu\Documents\thesis_project\IFRU>git add utility/compute.py
+
+(thesis) C:\Users\rooiu\Documents\thesis_project\IFRU>git commit -m "Handle empty AUC subsets for fake-user attack"
+[main 7643816] Handle empty AUC subsets for fake-user attack
+ 1 file changed, 31 insertions(+), 7 deletions(-)
+
+(thesis) C:\Users\rooiu\Documents\thesis_project\IFRU>git push
+Enumerating objects: 7, done.
+Counting objects: 100% (7/7), done.
+Delta compression using up to 22 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 1000 bytes | 1000.00 KiB/s, done.
+Total 4 (delta 2), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+To https://github.com/qwer3939/thesis-unlearning.git
+   7780bf7..7643816  main -> main
+
+(thesis) C:\Users\rooiu\Documents\thesis_project\IFRU>git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   ifru_lightgcn_movie_khop1_local.py
+        modified:   original_lightgcn_movie_local.py
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        _data_process_backup2.py
+        attack_output_backup/
+        generate_recommendation_scores_final.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+(thesis) C:\Users\rooiu\Documents\thesis_project\IFRU>git add generate_recommendation_scores_final.py
+warning: in the working copy of 'generate_recommendation_scores_final.py', LF will be replaced by CRLF the next time Git touches it
+
+(thesis) C:\Users\rooiu\Documents\thesis_project\IFRU>git commit -m "Add recommendation score generator for HR@10"
+[main 0087208] Add recommendation score generator for HR@10
+ 1 file changed, 323 insertions(+)
+ create mode 100644 generate_recommendation_scores_final.py
+
+(thesis) C:\Users\rooiu\Documents\thesis_project\IFRU>git push
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 22 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 3.89 KiB | 3.89 MiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/qwer3939/thesis-unlearning.git
+   7643816..0087208  main -> main
+
+(thesis) C:\Users\rooiu\Documents\thesis_project\IFRU>
