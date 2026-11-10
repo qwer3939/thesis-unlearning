@@ -30,7 +30,10 @@ for ratio in attack_ratios:
             item_records = train_normal_df[
                 train_normal_df['item'] == i
             ]
-            avg_label = item_records['label'].mean()
+            if len(item_records) > 0:
+                avg_label = item_records['label'].mean()
+            else:
+                avg_label = 0.0
 
         new_labels[index] = avg_label
 
