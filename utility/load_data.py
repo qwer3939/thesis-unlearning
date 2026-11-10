@@ -419,6 +419,8 @@ class Data_for_LightGCN(object):
                 print("don't split the matrix")
     
     def getSparseGraph_mode_b(self, mode, ratio_flag=0.01, recomputed=False):
+        ratio_flag = float(os.environ.get('CH_RATIO', ratio_flag))
+        print('[CH_RATIO] ratio_flag =', ratio_flag, flush=True)
         '''
         computed the changed graph, only considering the item that will be influenced
         '''
