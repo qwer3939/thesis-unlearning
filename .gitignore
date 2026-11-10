@@ -167,3 +167,12 @@ __pycache__/
 attack_output/ 
 example_scores.csv 
 suspicious_users.txt 
+
+# 원본 데이터 (재배포 금지)
+MovieLens/
+
+# 실행 결과물
+results/
+results_ch/
+recommendation_scores/
+*.bak
