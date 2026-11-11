@@ -176,3 +176,5 @@ results/
 results_ch/
 recommendation_scores/
 *.bak
+results_*/
+logs/
