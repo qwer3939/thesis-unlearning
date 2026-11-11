@@ -178,3 +178,4 @@ recommendation_scores/
 *.bak
 results_*/
 logs/
+logs/
